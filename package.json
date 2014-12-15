@@ -1,0 +1,16 @@
+{
+  "name": "oneup-season",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*",
+    "sinon": "*"
+  },
+  "scripts": {
+    "test": "mocha --recursive --reporter dot",
+    "tests": "mocha --recursive --reporter spec"
+  }
+}

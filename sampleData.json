@@ -1,0 +1,108 @@
+{
+  "season": {
+    "name": "NCAA 2014",
+    "conferences": [
+      {
+        "name": "Patriot League",
+        "teams": [
+          {
+            "name": "Lafayette Leopards",
+            "wins": 6,
+            "losses": 2,
+            "pointsScored": 77.5,
+            "pointsAgainst": 73
+          },
+          {
+            "name": "Army Black Knights",
+            "wins": 6,
+            "losses": 2,
+            "pointsScored": 78.13,
+            "pointsAgainst": 74.13
+          },
+          {
+            "name": "Holy Cross Crusaders",
+            "wins": 4,
+            "losses": 3,
+            "pointsScored": 70,
+            "pointsAgainst": 68.71
+          },
+          {
+            "name": "American University Eagles",
+            "wins": 5,
+            "losses": 4,
+            "pointsScored": 52.44,
+            "pointsAgainst": 51.56
+          },
+          {
+            "name": "Lehigh Mountain Hawks",
+            "wins": 4,
+            "losses": 4,
+            "pointsScored": 70.25,
+            "pointsAgainst": 69.38
+          },
+          {
+            "name": "Bucknell Bison",
+            "wins": 4,
+            "losses": 6,
+            "pointsScored": 63.7,
+            "pointsAgainst": 71.5
+          },
+          {
+            "name": "Loyola (MD) Greyhounds",
+            "wins": 3,
+            "losses": 6,
+            "pointsScored": 55.33,
+            "pointsAgainst": 68.33
+          },
+          {
+            "name": "Navy Midshipmen",
+            "wins": 3,
+            "losses": 7,
+            "pointsScored": 60.2,
+            "pointsAgainst": 69.7
+          },
+          {
+            "name": "Boston University Terriers",
+            "wins": 2,
+            "losses": 6,
+            "pointsScored": 65,
+            "pointsAgainst": 71.5
+          },
+          {
+            "name": "Colgate Raiders",
+            "wins": 2,
+            "losses": 7,
+            "pointsScored": 64.33,
+            "pointsAgainst": 65.11
+          }
+        ]
+      },
+      {
+        "name": "American Southwest Conference",
+        "teams": [
+          {
+            "name": "Howard Payne Yellow Jackets",
+            "wins": 0,
+            "losses": 1,
+            "pointsScored": 39,
+            "pointsAgainst": 68
+          },
+          {
+            "name": "Texas-Tyler Patriots",
+            "wins": 0,
+            "losses": 1,
+            "pointsScored": 49,
+            "pointsAgainst": 89
+          },
+          {
+            "name": "Louisiana College Wildcats",
+            "wins": 0,
+            "losses": 3,
+            "pointsScored": 58.33,
+            "pointsAgainst": 86
+          }
+        ]
+      }
+    ]
+  }
+}
