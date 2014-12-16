@@ -43,11 +43,11 @@ Your task is to join in on the fun. You will create the methods of a ```Season``
 
 When you've finished, the ```Season``` class will be able to answer some useful questions about this sort of data.
 
-### The Class
+### A Solution
 
 The ```Season``` class is a fairly simple creature. When created, it is passed a ```name``` which is attached to the ```Season``` as an attribute. ```Season``` has three methods, which you will implement. Since the plan is that one day ```Season``` will be backed by an asynchronous database calls someday, all of these calls take a callback as their last parameter. For the purposes of this exercise, feel free to store things in memory.
 
-#### importData
+```function importData(data, done)```
 
 This method is used to associate data in the form described above with the ```Season```. The ```importData``` method takes two parameters, a ```data``` ```Object``` in the format described above which contains the results for the season, and a ```done``` callback to be called when the method's work is finished. The ```done``` callback expects to be passed an ```Error```. This method has the following requirements:
 
@@ -57,14 +57,14 @@ This method is used to associate data in the form described above with the ```Se
 * If ```importData``` has already been successfully called, it should yield an ```Error```
 * Otherwise, no ```Error``` should be yielded
 
-#### getConferences
+```function getConferences(done)```
 
 This method is used to find all the imported conferences for the ```Season```. The ```getConferences``` method takes one parameter, a ```done``` callback to be called when the method's work is finished. The ```done``` callback expects to be passed an ```Error``` followed by an array of conferences, in the form of each element of the ```conferences``` array described above. This method has the following requirements:
 
 * If ```importData``` has not yet been successfully called, ```getConferences``` should yield an ```Error```
 * Otherwise, no ```Error``` should be yielded and the second parameter should contain an array of all imported conferences for the ```Season```
 
-#### getTeamsForConference
+```function getTeamsForConference(conferenceName, done)```
 
 This method is used to find all the teams for an imported conference. The ```getTeamsForConference``` method takes two parameters, a ```conferenceName``` string and ```done``` callback to be called when the method's work is finished. The ```done``` callback expects to be passed an ```Error``` followed by an array of teams, in the form of each element of the ```teams``` array of each conference as described above. This method has the following requirements:
 
