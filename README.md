@@ -43,11 +43,11 @@ Your task is to join in on the fun. You will create the methods of a ```Season``
 
 When you've finished, the ```Season``` class will be able to answer some useful questions about this sort of data.
 
-### A Solution
+## A Solution
 
 The ```Season``` class is a fairly simple creature. When created, it is passed a ```name``` which is attached to the ```Season``` as an attribute. ```Season``` has three methods, which you will implement. Since the plan is that one day ```Season``` will be backed by an asynchronous database calls someday, all of these calls take a callback as their last parameter. For the purposes of this exercise, feel free to store things in memory.
 
-```function importData(data, done)```
+### importData
 
 This method is used to associate data in the form described above with the ```Season```. The ```importData``` method takes two parameters, a ```data``` ```Object``` in the format described above which contains the results for the season, and a ```done``` callback to be called when the method's work is finished. The ```done``` callback expects to be passed an ```Error```. This method has the following requirements:
 
@@ -57,14 +57,14 @@ This method is used to associate data in the form described above with the ```Se
 * If ```importData``` has already been successfully called, it should yield an ```Error```
 * Otherwise, no ```Error``` should be yielded
 
-```function getConferences(done)```
+### getConferences
 
 This method is used to find all the imported conferences for the ```Season```. The ```getConferences``` method takes one parameter, a ```done``` callback to be called when the method's work is finished. The ```done``` callback expects to be passed an ```Error``` followed by an array of conferences, in the form of each element of the ```conferences``` array described above. This method has the following requirements:
 
 * If ```importData``` has not yet been successfully called, ```getConferences``` should yield an ```Error```
 * Otherwise, no ```Error``` should be yielded and the second parameter should contain an array of all imported conferences for the ```Season```
 
-```function getTeamsForConference(conferenceName, done)```
+### getTeamsForConference
 
 This method is used to find all the teams for an imported conference. The ```getTeamsForConference``` method takes two parameters, a ```conferenceName``` string and ```done``` callback to be called when the method's work is finished. The ```done``` callback expects to be passed an ```Error``` followed by an array of teams, in the form of each element of the ```teams``` array of each conference as described above. This method has the following requirements:
 
@@ -72,3 +72,25 @@ This method is used to find all the teams for an imported conference. The ```get
 * If ```conferenceName``` does not match any imported conference's name, ```getTeamsForConference``` should yield an ```Error```
 * Otherwise, no ```Error``` should be yielded and the second parameter should contain an array of all teams for the conference in the format described above
 
+## The Rules
+
+In order to get started, first clone the repository. Make sure that you have the latest version of [ NodeJS ](http://nodejs.org/) installed, then run the following from the root of the repository:
+
+```
+#!bash
+npm install
+```
+
+Once you've done this, go ahead and start implementing the functions in ```season.js``` in the root of the project. Feel free to use any libraries you want to, but make sure to add them to the ```package.json``` for the project so that other people can clone the repository and run your code. In order to exercise your code, tests have been included which test each of the requirements outlined above. Do not modify these tests, though you may add additional ones if you would like. In order to run the tests, do one of the following from the root of the repository:
+
+```
+npm test
+OR
+npm run tests
+```
+
+(the difference being that ```npm run tests``` is a little more verbose than ```npm test```).
+
+While you are working, try to think about what you would change about the project or handle differently, and why. What tests would you add or change? How would you restructure ```Season```'s functions? Would adding some new files make things easier to read or implement? Make sure to write understandable ```Error``` messages and to add comments if anything is unclear. Commit and push as often as feels natural. Don't forget to create a pull request and let us know once you're finished. 
+
+Hopefully, you find this exercise fun and not too stressful. Don't hesitate to ask us if you run into any obstacles that you're having a hard time circumventing, and thank you again for your interest in joining the team!
