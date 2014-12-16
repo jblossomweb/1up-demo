@@ -2,7 +2,7 @@ function Season(name) {
   this.name = name
 }
 
-Season.prototype.importResults = function importResults(results, done) {
+Season.prototype.importData = function importData(data, done) {
   // Your code goes here
 }
 
