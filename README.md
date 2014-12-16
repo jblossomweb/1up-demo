@@ -51,9 +51,9 @@ The ```Season``` class is a fairly simple creature. When created, it is passed a
 
 This method is used to associate data in the form described above with the ```Season```. The ```importData``` method takes two parameters, a ```data``` ```Object``` in the format described above which contains the results for the season, and a ```done``` callback to be called when the method's work is finished. The ```done``` callback expects to be passed an ```Error```. This method has the following requirements:
 
-* If ```data``` is ```null```, it should yield an ```Error```
-* If ```data``` is ```undefined```, it should yield an ```Error```
-* If ```data.season.name``` does not match the ```Season```'s ```name```, it should yield an ```Error```
+* If ```data``` is ```null```, ```importData``` should yield an ```Error```
+* If ```data``` is ```undefined```, ```importData``` should yield an ```Error```
+* If the season's name in the passed data does not match the ```Season```'s ```name```, ```importData``` should yield an ```Error```
 * If ```importData``` has already been successfully called, it should yield an ```Error```
 * Otherwise, no ```Error``` should be yielded
 
