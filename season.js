@@ -23,7 +23,7 @@ Season.prototype.importData = function importData(data, done) {
   }
 
   // import some data
-
+  this.data = data;
   this.imported = true;
   done(error);
 }
@@ -37,9 +37,8 @@ Season.prototype.getConferences = function getConferences(done) {
   if(!this.imported){
   	error = new Error('data not imported');
   } else {
-  	// conferences = array of conferences for the season
+	conferences = this.data.season.conferences
   }
-
   done(error,conferences);
 
 }
