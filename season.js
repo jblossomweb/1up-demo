@@ -18,13 +18,13 @@ Season.prototype.importData = function importData(data, done) {
   }
 
   // If importData has already been successfully called, it should yield an Error
-  if(this.imported){
+  else if(this.imported){
   	error = new Error('data already imported');
+  } else {
+  	// import some data
+  	this.data = data;
+  	this.imported = true;
   }
-
-  // import some data
-  this.data = data;
-  this.imported = true;
   done(error);
 }
 
@@ -52,11 +52,18 @@ Season.prototype.getTeamsForConference = function getTeamsForConference(conferen
   if(!this.imported){
   	error = new Error('data not imported');
   } else {
-  	// teams = array of teams by conference
+  	// npm install --save array.prototype.find
+  	require('array.prototype.find');
+  	var conference = this.data.season.conferences.find(function(c) {
+  		return c.name == conferenceName;
+  	});
+  	if(conference == null){
+  		error = new Error(conferenceName+' not in imported data');
+  	} else {
+  		teams = conference.teams;
+  	}
   }
-
   done(error,teams);
-
 }
 
 module.exports = Season
