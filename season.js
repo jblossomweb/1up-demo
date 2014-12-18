@@ -21,17 +21,85 @@ Season.prototype.importData = function importData(data, done) {
   else if(this.imported){
   	error = new Error('data already imported');
   } else {
-  	// import some data
-  	this.data = data;
-  	this.imported = true;
+
+    var season = this;
+    this.validateData(data,function(e){
+      // import some data
+      season.data = data;
+      season.imported = true;
+      error = e;
+    });
+  	
   }
-  done(error);
+
+  if (typeof(done) == "function") {
+    done(error);
+  }
+  
+}
+
+Season.prototype.validateData = function validateData(data,done) {
+  
+  var error = null;
+
+  if(data.season == null){
+    error = new Error('season data invalid');
+  } else if (data.season.name == null) {
+    error = new Error('season has no name');
+  } else if (data.season.conferences == null) {
+    error = new Error('season has no conference data');
+  } else if (data.season.conferences.length < 1) {
+    // maybe this one's just a warning
+    error = new Error('season has no conferences'); 
+  } else {
+    var conf = null;
+    for (c=0;c<data.season.conferences.length;c++){ 
+        conf = data.season.conferences[c];
+        if(conf.name == null){
+          error = new Error(data.season.name+' conference '+c+' has no name');
+        } else if(conf.teams == null){
+          error = new Error(conf.name+' has no valid team data');
+        } else if(conf.teams.length < 1){
+          // maybe this one's just a warning
+          error = new Error(conf.name+' has no teams');
+        } else {
+          var team = null;
+          for (t=0;t<conf.teams.length;t++){
+            team = conf.teams[t];
+            if(team.name == null){
+              error = new Error(conf.name+' team '+t+' has no name');
+            } else if(team.wins == null){
+              error = new Error(team.name+' has no wins data');
+            } else if(parseInt(team.wins) !== team.wins){
+              error = new Error(team.name+' has non-integer wins data');
+            } else if(team.losses == null){
+              error = new Error(team.name+' has no losses data');
+            } else if(parseInt(team.losses) !== team.losses){
+              error = new Error(team.name+' has non-integer losses data');
+            } else if(team.pointsScored == null){
+              error = new Error(team.name+' has no pointsScored data');
+            } else if(parseFloat(team.pointsScored) !== team.pointsScored){
+              error = new Error(team.name+' has non-numeric pointsScored data');
+            } else if(team.pointsAgainst == null){
+              error = new Error(team.name+' has no pointsAgainst data');
+            } else if(parseFloat(team.pointsAgainst) !== team.pointsAgainst){
+              error = new Error(team.name+' has non-numeric pointsAgainst data');
+            }
+          }
+        }
+    }
+  }
+
+  if (typeof(done) == "function") {
+    done(error);
+  }
+
 }
 
 Season.prototype.getConferences = function getConferences(done) {
   
   var error = null;
-  var conferences = new Array();
+  var conferences = null;
 
   // If importData has not yet been successfully called, getConferences should yield an Error
   if(!this.imported){
@@ -39,14 +107,16 @@ Season.prototype.getConferences = function getConferences(done) {
   } else {
 	conferences = this.data.season.conferences
   }
-  done(error,conferences);
+  if (typeof(done) == "function") {
+    done(error,conferences);
+  }
 
 }
 
 Season.prototype.getTeamsForConference = function getTeamsForConference(conferenceName, done) {
     
   var error = null;
-  var teams = new Array();
+  var teams = null;
 
   // if importData has not yet been successfully called yield an Error 
   if(!this.imported){
@@ -63,7 +133,9 @@ Season.prototype.getTeamsForConference = function getTeamsForConference(conferen
   		teams = conference.teams;
   	}
   }
-  done(error,teams);
+  if (typeof(done) == "function") {
+    done(error,teams);
+  }
 }
 
 module.exports = Season
